@@ -28,13 +28,12 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.js",
-    "prettier": "prettier -l src/**/*.js",
     "beautify": "prettier --write src/**/*.js"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint && yarn prettier",
-      "pre-push": "yarn beautify"
+      "pre-commit": "yarn lint && yarn beautify",
+      "pre-push": "yarn beautify && yarn test"
     }
   }
 }
