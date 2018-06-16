@@ -19,7 +19,7 @@
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.9.1",
-    "husky": "^0.14.3",
+    "husky": "^1.0.0-rc.9",
     "prettier": "^1.13.5"
   },
   "scripts": {
