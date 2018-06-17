@@ -7,13 +7,12 @@ export const GET_DOGS = gql`
     dogs {
       id
       breed
-      displayImage
     }
   }
 `;
 
 const SELECT_BREED = gql`
-  mutation SelectBreed($breed: String!) {
+  mutation($breed: String!) {
     selectBreed(breed: $breed) @client
   }
 `;

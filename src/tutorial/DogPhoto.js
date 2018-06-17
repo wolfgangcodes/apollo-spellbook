@@ -3,10 +3,9 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
 const GET_DOG_PHOTO = gql`
-  query dog($breed: String!) {
+  {
     dog(breed: $breed) {
-      id
-      displayImage
+      displayImage @client
     }
   }
 `;
@@ -22,7 +21,6 @@ export const DogPhoto = ({ breed }) => (
       if (networkStatus === 4) return 'Refetching!';
       if (loading) return null;
       if (error) return `Error!: ${error}`;
-      console.log(breed, data);
       return (
         <div>
           <img
@@ -30,7 +28,6 @@ export const DogPhoto = ({ breed }) => (
             src={data.dog.displayImage}
             style={{ height: 100, width: 100 }}
           />
-          <button onClick={refetch}>Refetch!</button>
         </div>
       );
     }}
