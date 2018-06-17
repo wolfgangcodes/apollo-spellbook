@@ -1,18 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { DogSelect } from './tutorial/DogSelect';
+import { DogPhoto } from './tutorial/DogPhoto';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
+
+const GET_BREED = gql`
+  {
+    breed
+  }
+`;
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Apollo tuts.</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Query query={GET_BREED}>
+          {({ data: { breed } }) => (
+            <div>
+              <DogSelect breed={breed} />
+              <DogPhoto breed={breed} />
+            </div>
+          )}
+        </Query>
       </div>
     );
   }
