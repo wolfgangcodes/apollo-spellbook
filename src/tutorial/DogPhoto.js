@@ -16,14 +16,13 @@ export const DogPhoto = ({ breed }) => (
     query={GET_DOG_PHOTO}
     variables={{ breed }}
     skip={!breed}
-    pollInterval={500}
     notifyOnNetworkStatusChange
   >
     {({ loading, networkStatus, error, data, refetch }) => {
       if (networkStatus === 4) return 'Refetching!';
       if (loading) return null;
       if (error) return `Error!: ${error}`;
-
+      console.log(breed, data);
       return (
         <div>
           <img
